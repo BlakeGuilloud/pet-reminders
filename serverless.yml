@@ -1,0 +1,15 @@
+service: pet-reminders
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  environment:
+    ACCOUNT_SID: ${file(./config.yml):ACCOUNT_SID}
+    ACCOUNT_TOKEN: ${file(./config.yml):ACCOUNT_TOKEN}
+    FROM_NUMBER: ${file(./config.yml):FROM_NUMBER}
+
+functions:
+  weather:
+    handler: handler.run
+    events:
+      - schedule: cron(0 12 * * ? *)
