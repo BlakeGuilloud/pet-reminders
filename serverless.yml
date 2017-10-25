@@ -9,7 +9,7 @@ provider:
     FROM_NUMBER: ${file(./config.yml):FROM_NUMBER}
 
 functions:
-  weather:
+  sendReminder:
     handler: handler.run
     events:
-      - schedule: cron(0 12 24 * ? *)
+      - schedule: cron(0 12 15 * ? *)
